@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Ejercicio CRUD</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-group" >
+                <li *ngFor="let empleado of empleadoarray"
+                 class="list-group-item list-group-item-action" (click)="openForEdit(empleado)" [class.active]="empleado == selectedEmployee ">
+                 {{empleado.id}} - {{empleado.nombre}} - {{empleado.pais}} </li>
+                
+            </ul>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="card-title">
+                        Ingresar empleado
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedEmployee.nombre" placeholder="Nombre" name="nombre" id="" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="selectedEmployee.pais" placeholder="Pais" name="pais" id="" class="form-control">
+                    </div>
+                    <div class="form-group mt-4">
+                        <button class="btn btn-success" (click)="registrar()">Registrar</button>
+                        <button class="btn btn-danger" (click)="delete()" *ngIf="selectedEmployee.id !== 0">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
